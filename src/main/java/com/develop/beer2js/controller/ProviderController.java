@@ -26,15 +26,15 @@ public class ProviderController {
         return providerRepository.save(provider);
     }
 
-    @GetMapping("providers/{id}")
-    public Provider getProviderById(@PathVariable(value = "id") Long providerId){
+    @GetMapping("providers/{postId}")
+    public Provider getProviderById(@PathVariable(value = "postId") Long providerId){
         return providerRepository.findById(providerId)
-                .orElseThrow(() -> new ResourceNotFoundException("provider", "id",providerId));
+                .orElseThrow(() -> new ResourceNotFoundException("provider", "postId",providerId));
     }
-    @PutMapping("/providers/{id}")
-    public Provider updateProvider(@PathVariable(value = "id") Long providerId, @Valid @RequestBody Provider providerDetails){
+    @PutMapping("/providers/{postId}")
+    public Provider updateProvider(@PathVariable(value = "postId") Long providerId, @Valid @RequestBody Provider providerDetails){
         Provider provider = providerRepository.findById(providerId)
-                .orElseThrow(() -> new ResourceNotFoundException("provider", "id",providerId));
+                .orElseThrow(() -> new ResourceNotFoundException("provider", "postId",providerId));
         provider.setName(providerDetails.getName());
         provider.setContactNumber(providerDetails.getContactNumber());
         provider.setContactRefName(providerDetails.getContactRefName());
@@ -42,10 +42,10 @@ public class ProviderController {
         Provider updateProvider = providerRepository.save(provider);
         return updateProvider;
     }
-    @DeleteMapping("/providers/{id}")
-    public ResponseEntity<?> deleteProvider(@PathVariable(value = "id") Long providerId){
+    @DeleteMapping("/providers/{postId}")
+    public ResponseEntity<?> deleteProvider(@PathVariable(value = "postId") Long providerId){
         Provider provider = providerRepository.findById(providerId)
-                .orElseThrow(() -> new ResourceNotFoundException("provider", "id",providerId));
+                .orElseThrow(() -> new ResourceNotFoundException("provider", "postId",providerId));
         providerRepository.delete(provider);
         return ResponseEntity.ok().build();
     }

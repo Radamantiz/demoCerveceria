@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
         allowGetters = true)
 public class Provider extends AuditModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
     private String name;
