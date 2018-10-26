@@ -20,12 +20,6 @@ public class Variety extends AuditModel {
     @NotNull
     private boolean active;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_provider")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private Provider provider;
-
     public Long getId() {
         return id;
     }
@@ -48,13 +42,6 @@ public class Variety extends AuditModel {
 
     public void setActive(boolean active) {
         this.active = active;
-    }
+    }}
 
-    public Provider getProvider() {
-        return provider;
-    }
 
-    public void setProvider(Provider provider) {
-        this.provider = provider;
-    }
-}

@@ -39,8 +39,7 @@ public class ProviderController {
         provider.setContactNumber(providerDetails.getContactNumber());
         provider.setContactRefName(providerDetails.getContactRefName());
         provider.setEmail(providerDetails.getEmail());
-        Provider updateProvider = providerRepository.save(provider);
-        return updateProvider;
+        return providerRepository.save(provider);
     }
     @DeleteMapping("/providers/{postId}")
     public ResponseEntity<?> deleteProvider(@PathVariable(value = "postId") Long providerId){
