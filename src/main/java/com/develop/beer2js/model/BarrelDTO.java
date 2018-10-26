@@ -1,0 +1,35 @@
+package com.develop.beer2js.model;
+
+public class BarrelDTO extends AuditModel {
+
+
+    private boolean tapped;
+    private double charge;
+    private Long variety_id;
+
+
+
+    public double getCharge() {
+        return charge;
+    }
+
+    public void setCharge(double charge) {
+        this.charge = charge;
+    }
+
+    public Long getVariety_id() {
+        return variety_id;
+    }
+
+    public void setVariety_id(Long variety_id) {
+        this.variety_id = variety_id;
+    }
+    public boolean isTapped() {
+        return tapped;
+    }
+    public void setTapped(boolean tapped) {
+        this.tapped = tapped;
+    }
+}
+
+

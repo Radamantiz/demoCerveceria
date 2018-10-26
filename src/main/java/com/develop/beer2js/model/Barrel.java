@@ -12,25 +12,13 @@ public class Barrel extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @NotNull
-    private String name;
-
-    @NotNull
-    private boolean installed;
-
+    private boolean tapped;
     @NotNull
     private double charge;
 
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_Variety")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private Provider provider;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_Provider")
+    @JoinColumn(name = "variety_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Variety variety;
@@ -43,22 +31,6 @@ public class Barrel extends AuditModel {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public boolean isInstalled() {
-        return installed;
-    }
-
-    public void setInstalled(boolean installed) {
-        this.installed = installed;
-    }
-
     public double getCharge() {
         return charge;
     }
@@ -67,19 +39,26 @@ public class Barrel extends AuditModel {
         this.charge = charge;
     }
 
-    public Provider getProvider() {
-        return provider;
-    }
-
-    public void setProvider(Provider provider) {
-        this.provider = provider;
-    }
-
     public Variety getVariety() {
         return variety;
     }
 
     public void setVariety(Variety variety) {
         this.variety = variety;
+    }
+
+    public boolean isTapped() {
+        return tapped;
+    }
+
+    public void setTapped(boolean tapped) {
+        this.tapped = tapped;
+    }
+
+    public void tap(){
+        this.tapped = true;
+    }
+    public void untap(){
+        this.tapped = false;
     }
 }
