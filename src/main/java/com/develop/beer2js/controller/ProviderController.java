@@ -26,7 +26,7 @@ public class ProviderController {
         return providerRepository.save(provider);
     }
 
-    @GetMapping("providers/{postId}")
+    @GetMapping("/providers/{postId}")
     public Provider getProviderById(@PathVariable(value = "postId") Long providerId){
         return providerRepository.findById(providerId)
                 .orElseThrow(() -> new ResourceNotFoundException("provider", "postId",providerId));

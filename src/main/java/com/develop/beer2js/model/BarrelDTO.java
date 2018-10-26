@@ -2,25 +2,22 @@ package com.develop.beer2js.model;
 
 public class BarrelDTO extends AuditModel {
 
-
     private boolean tapped;
     private double charge;
-    private Long variety_id;
+    private Integer capacity;
 
+    private Long variety_id;
 
 
     public double getCharge() {
         return charge;
     }
-
     public void setCharge(double charge) {
         this.charge = charge;
     }
-
     public Long getVariety_id() {
         return variety_id;
     }
-
     public void setVariety_id(Long variety_id) {
         this.variety_id = variety_id;
     }
@@ -29,6 +26,14 @@ public class BarrelDTO extends AuditModel {
     }
     public void setTapped(boolean tapped) {
         this.tapped = tapped;
+    }
+
+    public Integer getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
     }
 }
 

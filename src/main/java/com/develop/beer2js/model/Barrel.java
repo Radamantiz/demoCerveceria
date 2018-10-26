@@ -16,6 +16,8 @@ public class Barrel extends AuditModel {
     private boolean tapped;
     @NotNull
     private double charge;
+    @NotNull
+    private Integer capacity;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "variety_id")
@@ -60,5 +62,14 @@ public class Barrel extends AuditModel {
     }
     public void untap(){
         this.tapped = false;
+    }
+
+
+    public Integer getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
     }
 }

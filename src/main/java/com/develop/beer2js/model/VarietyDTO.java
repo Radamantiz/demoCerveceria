@@ -2,11 +2,9 @@ package com.develop.beer2js.model;
 
 public class VarietyDTO extends AuditModel {
 
-
     private String name;
     private boolean active;
     private long provider_id;
-
 
     public String getName() {
         return name;
