@@ -26,27 +26,30 @@ public class ProviderController {
         return providerRepository.save(provider);
     }
 
-    @GetMapping("/providers/{postId}")
-    public Provider getProviderById(@PathVariable(value = "postId") Long providerId){
+    @GetMapping("/providers/{provider_id}")
+    public Provider getProviderById(@PathVariable(value = "provider_id") Long providerId){
         return providerRepository.findById(providerId)
-                .orElseThrow(() -> new ResourceNotFoundException("provider", "postId",providerId));
+                .orElseThrow(() -> new ResourceNotFoundException("provider", "provider_id",providerId));
     }
-    @PutMapping("/providers/{postId}")
-    public Provider updateProvider(@PathVariable(value = "postId") Long providerId, @Valid @RequestBody Provider providerDetails){
-        Provider provider = providerRepository.findById(providerId)
-                .orElseThrow(() -> new ResourceNotFoundException("provider", "postId",providerId));
-        provider.setName(providerDetails.getName());
-        provider.setContactNumber(providerDetails.getContactNumber());
-        provider.setContactRefName(providerDetails.getContactRefName());
-        provider.setEmail(providerDetails.getEmail());
-        return providerRepository.save(provider);
+    @PutMapping("/providers/{provider_id}")
+    public Provider updateProvider(@PathVariable(value = "provider_id") Long providerId, @Valid @RequestBody Provider providerDetails){
+
+      return providerRepository.findById(providerId).map(provider -> {
+          provider.setName(providerDetails.getName());
+          provider.setContactNumber(providerDetails.getContactNumber());
+          provider.setContactRefName(providerDetails.getContactRefName());
+          provider.setEmail(providerDetails.getEmail());
+          return providerRepository.save(provider);
+      }).orElseThrow(()-> new ResourceNotFoundException("Provider","provider_id",providerId));
     }
-    @DeleteMapping("/providers/{postId}")
-    public ResponseEntity<?> deleteProvider(@PathVariable(value = "postId") Long providerId){
-        Provider provider = providerRepository.findById(providerId)
-                .orElseThrow(() -> new ResourceNotFoundException("provider", "postId",providerId));
-        providerRepository.delete(provider);
-        return ResponseEntity.ok().build();
+
+    @DeleteMapping("/providers/{provider_id}")
+    public ResponseEntity<?> deleteProvider(@PathVariable(value = "provider_id") Long providerId){
+
+        return providerRepository.findById(providerId).map(provider -> {
+             providerRepository.delete(provider);
+             return ResponseEntity.ok().build();
+        }).orElseThrow(()-> new ResourceNotFoundException("Provider","provider_id",providerId));
     }
 
 }

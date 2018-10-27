@@ -38,9 +38,21 @@ public class BarrelController {
                 return barrelRepository.save(barrel);
             }).orElseThrow(() -> new ResourceNotFoundException("Variety", "variety_id", varietyId));
     }
-    @GetMapping("/barrels/{barrelId}")
-    public Barrel getBarrelById(@PathVariable(value = "barrelId") Long barrelId){
-        return barrelRepository.findById(barrelId)
-                .orElseThrow(()->new ResourceNotFoundException("Barrel", "barrelId", barrelId));
+    @GetMapping("/barrels/{barrel_id}")
+    public Barrel getBarrelById(@PathVariable(value = "barrel_id") Long barrel_id){
+        return barrelRepository.findById(barrel_id)
+                .orElseThrow(()->new ResourceNotFoundException("Barrel", "barrel_id", barrel_id));
     }
+
+    @PutMapping("/barrels/{barrel_id}")
+    public Barrel updateBarrel(@PathVariable(value = "barrel_id") Long barrel_id, @Valid @RequestBody BarrelDTO updatedBarrel){
+
+        return barrelRepository.findById(barrel_id).map(barrel -> {
+            barrel.setCharge(updatedBarrel.getCharge());
+            barrel.setTapped(updatedBarrel.isTapped());
+            return barrelRepository.save(barrel);
+        }).orElseThrow(() -> new ResourceNotFoundException("Barrel", "barrel_id", barrel_id));
+    }
+
+
 }
