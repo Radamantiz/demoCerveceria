@@ -27,29 +27,29 @@ public class ProviderController {
     }
 
     @GetMapping("/providers/{provider_id}")
-    public Provider getProviderById(@PathVariable(value = "provider_id") Long providerId){
-        return providerRepository.findById(providerId)
-                .orElseThrow(() -> new ResourceNotFoundException("provider", "provider_id",providerId));
+    public Provider getProviderById(@PathVariable(value = "provider_id") Long provider_id){
+        return providerRepository.findById(provider_id)
+                .orElseThrow(() -> new ResourceNotFoundException("provider", "provider_id",provider_id));
     }
     @PutMapping("/providers/{provider_id}")
-    public Provider updateProvider(@PathVariable(value = "provider_id") Long providerId, @Valid @RequestBody Provider providerDetails){
+    public Provider updateProvider(@PathVariable(value = "provider_id") Long provider_id, @Valid @RequestBody Provider providerDetails){
 
-      return providerRepository.findById(providerId).map(provider -> {
+      return providerRepository.findById(provider_id).map(provider -> {
           provider.setName(providerDetails.getName());
           provider.setContactNumber(providerDetails.getContactNumber());
           provider.setContactRefName(providerDetails.getContactRefName());
           provider.setEmail(providerDetails.getEmail());
           return providerRepository.save(provider);
-      }).orElseThrow(()-> new ResourceNotFoundException("Provider","provider_id",providerId));
+      }).orElseThrow(()-> new ResourceNotFoundException("Provider","provider_id",provider_id));
     }
 
     @DeleteMapping("/providers/{provider_id}")
-    public ResponseEntity<?> deleteProvider(@PathVariable(value = "provider_id") Long providerId){
+    public ResponseEntity<?> deleteProvider(@PathVariable(value = "provider_id") Long provider_id){
 
-        return providerRepository.findById(providerId).map(provider -> {
+        return providerRepository.findById(provider_id).map(provider -> {
              providerRepository.delete(provider);
              return ResponseEntity.ok().build();
-        }).orElseThrow(()-> new ResourceNotFoundException("Provider","provider_id",providerId));
+        }).orElseThrow(()-> new ResourceNotFoundException("Provider","provider_id",provider_id));
     }
 
 }
