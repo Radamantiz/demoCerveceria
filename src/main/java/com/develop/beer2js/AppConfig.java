@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 @Configuration
-@ComponentScan("com.concretepage")
+@ComponentScan("com.develop")
 @EnableWebMvc
 public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
