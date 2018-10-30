@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class ProviderController {
@@ -20,6 +20,7 @@ public class ProviderController {
 
     @GetMapping("/providers")
     public List<Provider> getProviders(){
+
         return providerRepository.findAll();
     }
     @PostMapping("/providers")
