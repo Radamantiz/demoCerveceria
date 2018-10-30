@@ -19,19 +19,19 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
                 .allowedOrigins("*")
-                .allowedMethods("POST", "GET",  "PUT", "OPTIONS", "DELETE");
+                .allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE");
     }
-
-    @Bean
-    public DataSource dataSource() {
-        return DataSourceBuilder
-                .create()
-                .username("uqjusabsufocyc")
-                .password("247ac26865169cadccd71d4c122ac0ad0cc9ebfd059b36614f412fcd91d650b1")
-                .url("jdbc:postgresql://uqjusabsufocyc:247ac26865169cadccd71d4c122ac0ad0cc9ebfd059b36614f412fcd91d650b1@ec2-54-225-241-25.compute-1.amazonaws.com:5432/de8bubeq18429i")
-                .driverClassName("org.postgresql.Driver")
-                .build();
-    }
+}
+//    @Bean
+//    public DataSource dataSource() {
+//        return DataSourceBuilder
+//                .create()
+//                .username("uqjusabsufocyc")
+//                .password("247ac26865169cadccd71d4c122ac0ad0cc9ebfd059b36614f412fcd91d650b1")
+//                .url("jdbc:postgresql://uqjusabsufocyc:247ac26865169cadccd71d4c122ac0ad0cc9ebfd059b36614f412fcd91d650b1@ec2-54-225-241-25.compute-1.amazonaws.com:5432/de8bubeq18429i")
+//                .driverClassName("org.postgresql.Driver")
+//                .build();
+  //  }
     /*
     @Bean
     public DataSource dataSource() {
@@ -43,4 +43,4 @@ public class AppConfig extends WebMvcConfigurerAdapter {
                 .driverClassName("org.postgresql.Driver")
                 .build();
     }*/
-}
+
