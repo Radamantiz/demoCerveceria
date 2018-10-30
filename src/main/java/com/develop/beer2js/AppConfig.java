@@ -28,7 +28,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
                 .create()
                 .username("uqjusabsufocyc")
                 .password("247ac26865169cadccd71d4c122ac0ad0cc9ebfd059b36614f412fcd91d650b1")
-                .url("jdbc:postgres://uqjusabsufocyc:247ac26865169cadccd71d4c122ac0ad0cc9ebfd059b36614f412fcd91d650b1@ec2-54-225-241-25.compute-1.amazonaws.com:5432/de8bubeq18429i")
+                .url("jdbc:postgresql://uqjusabsufocyc:247ac26865169cadccd71d4c122ac0ad0cc9ebfd059b36614f412fcd91d650b1@ec2-54-225-241-25.compute-1.amazonaws.com:5432/de8bubeq18429i")
                 .driverClassName("org.postgresql.Driver")
                 .build();
     }
