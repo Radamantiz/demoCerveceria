@@ -8,7 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-//@Table(name = "barrel")
+@Table(name = "barrel")
 public class Barrel extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

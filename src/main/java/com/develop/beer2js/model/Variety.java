@@ -11,7 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-//@Table(name = "variety")
+@Table(name = "variety")
 public class Variety extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
