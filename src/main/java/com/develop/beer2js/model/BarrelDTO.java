@@ -1,13 +1,16 @@
 package com.develop.beer2js.model;
 
+import javax.validation.constraints.NotNull;
+
 public class BarrelDTO extends AuditModel {
-
+    @NotNull
     private boolean tapped;
+    @NotNull
     private double charge;
+    @NotNull
     private Integer capacity;
-
+    @NotNull
     private Long variety_id;
-
 
     public double getCharge() {
         return charge;

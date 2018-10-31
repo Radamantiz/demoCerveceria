@@ -31,14 +31,19 @@ public class Variety extends AuditModel {
     private double ibu;
     @NotNull
     private double alcohol_percentage;
-    @NotBlank
-    private String color;
 
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "provider_id", updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Provider provider;
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "color_id", updatable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Color color;
 
 
 
@@ -74,7 +79,6 @@ public class Variety extends AuditModel {
         this.provider = provider;
     }
 
-
     public double getIbu() {
         return ibu;
     }
@@ -90,15 +94,6 @@ public class Variety extends AuditModel {
     public void setAlcohol_percentage(double alcohol_percentage) {
         this.alcohol_percentage = alcohol_percentage;
     }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
 
     public double getPint_price() {
         return pint_price;
@@ -122,6 +117,14 @@ public class Variety extends AuditModel {
 
     public void setBottle_price(double bottle_price) {
         this.bottle_price = bottle_price;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 }
 

@@ -1,16 +1,27 @@
 package com.develop.beer2js.model;
 
-public class VarietyDTO extends AuditModel {
+import javax.validation.constraints.NotNull;
 
+public class VarietyDTO extends AuditModel {
+    @NotNull
     private String name;
+    @NotNull
     private boolean active;
+    @NotNull
     private long provider_id;
+    @NotNull
     private double  pint_price;
+    @NotNull
     private double  half_pint_price;
+    @NotNull
     private double bottle_price;
+    @NotNull
     private double ibu;
+    @NotNull
     private double alcohol_percentage;
-    private String color;
+    @NotNull
+    private long color_id;
+    @NotNull
     //private double profit_percentage;
 
     public String getName() {
@@ -53,14 +64,6 @@ public class VarietyDTO extends AuditModel {
         this.alcohol_percentage = alcohol_percentage;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
     public double getPint_price() {
         return pint_price;
     }
@@ -83,6 +86,14 @@ public class VarietyDTO extends AuditModel {
 
     public void setBottle_price(double bottle_price) {
         this.bottle_price = bottle_price;
+    }
+
+    public long getColor_id() {
+        return color_id;
+    }
+
+    public void setColor_id(long color_id) {
+        this.color_id = color_id;
     }
 }
 

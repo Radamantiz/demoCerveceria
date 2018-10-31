@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BarrelRepository extends JpaRepository<Barrel, Long> {
-    Page<Barrel> findByVarietyId(Long varietyId, Pageable pageable);
+    Page<Barrel> findByVarietyId(Long variety_id, Pageable pageable);
 }
