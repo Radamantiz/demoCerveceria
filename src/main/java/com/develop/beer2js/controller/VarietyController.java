@@ -30,9 +30,16 @@ public class VarietyController {
 
         return providerRepository.findById(requestVariety.getProvider_id()).map(provider -> {
             Variety variety = new Variety();
+            variety.setProvider(provider);
             variety.setActive(requestVariety.isActive());
             variety.setName(requestVariety.getName());
-            variety.setProvider(provider);
+            variety.setAlcohol_percentage(requestVariety.getAlcohol_percentage());
+            variety.setPint_price(requestVariety.getPint_price());
+            variety.setHalf_pint_price(requestVariety.getHalf_pint_price());
+            variety.setColor(requestVariety.getColor());
+            variety.setIbu(requestVariety.getIbu());
+
+            //variety.setProfit_percentage((variety.getHalf_pint_price()()-variety.getPint_price()())*variety.getPint_price()()/100);
             return  varietyRepository.save(variety);
         }).orElseThrow(()-> new ResourceNotFoundException("Provider", "provider_id", requestVariety.getProvider_id()));
     }
@@ -40,20 +47,29 @@ public class VarietyController {
     @GetMapping("/varieties/{varietyId}")
     public Variety getVarityById(@PathVariable(value = "varietyId") Long varietyId){
         return varietyRepository.findById(varietyId)
-                .orElseThrow(() -> new ResourceNotFoundException("variety", "varietyId",varietyId));
+                .orElseThrow(() -> new ResourceNotFoundException("variety", "variety_id",varietyId));
     }
     @PutMapping("/varieties/{varietyId}")
     public Variety updateVarity(@PathVariable(value = "varietyId") Long varietyId, @Valid @RequestBody Variety varietyDetails){
-        Variety variety = varietyRepository.findById(varietyId)
-                .orElseThrow(() -> new ResourceNotFoundException("variety", "varietyId",varietyId));
-        variety.setName(varietyDetails.getName());
-        return varietyRepository.save(variety);
+
+        return varietyRepository.findById(varietyId).map(variety -> {
+            variety.setActive(varietyDetails.isActive());
+            variety.setName(varietyDetails.getName());
+            variety.setAlcohol_percentage(varietyDetails.getAlcohol_percentage());
+            variety.setPint_price(varietyDetails.getPint_price());
+            variety.setHalf_pint_price(varietyDetails.getHalf_pint_price());
+            variety.setColor(varietyDetails.getColor());
+            variety.setIbu(varietyDetails.getIbu());
+            //variety.setProfit_percentage((variety.getHalf_pint_price()-variety.getPint_price())*variety.getPint_price()/100);
+            return varietyRepository.save(variety);
+        }).orElseThrow(()-> new ResourceNotFoundException("Variety", "variety_id:", varietyId));
     }
     @DeleteMapping("/varieties/{varietyId}")
     public ResponseEntity<?> deleteVarity(@PathVariable(value = "varietyId") Long varietyId){
-        Variety variety = varietyRepository.findById(varietyId)
-                .orElseThrow(() -> new ResourceNotFoundException("variety", "varietyId",varietyId));
-        varietyRepository.delete(variety);
-        return ResponseEntity.ok().build();
+
+       return varietyRepository.findById(varietyId).map(variety -> {
+            varietyRepository.delete(variety);
+           return ResponseEntity.ok().build();
+       }).orElseThrow(()-> new ResourceNotFoundException("Variety", "variety_id", varietyId));
     }
 }
