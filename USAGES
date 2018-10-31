@@ -1,6 +1,2 @@
 heroku logs --tail
-heroku  https://git.heroku.com/beer2js.git (fetch)
-heroku  https://git.heroku.com/beer2js.git (push)
-origin  https://github.com/Radamantiz/beer2js-backend.git (fetch)
-origin  https://github.com/Radamantiz/beer2js-backend.git (push)
 java -jar -Dspring.profiles.active=local target\beer2js-0.0.1-SNAPSHOT.jar

@@ -31,14 +31,17 @@ public class VarietyController {
     public Variety addVarity(@Valid @RequestBody VarietyDTO requestVariety){
 
         return providerRepository.findById(requestVariety.getProvider_id()).map(provider -> {
-            return colorRepository.findById(requestVariety.getColor_id()).map(color -> {Variety variety = new Variety();
-                variety.setProvider(provider);
-                variety.setActive(requestVariety.isActive());
+            return colorRepository.findById(requestVariety.getColor_id()).map(color -> {
+                Variety variety = new Variety();
                 variety.setName(requestVariety.getName());
-                variety.setAlcohol_percentage(requestVariety.getAlcohol_percentage());
+                variety.setActive(requestVariety.isActive());
                 variety.setPint_price(requestVariety.getPint_price());
                 variety.setHalf_pint_price(requestVariety.getHalf_pint_price());
+                variety.setBottle_price(requestVariety.getBottle_price());
                 variety.setIbu(requestVariety.getIbu());
+                variety.setAlcohol_percentage(requestVariety.getAlcohol_percentage());
+                variety.setProvider(provider);
+                variety.setColor(color);
                 return varietyRepository.save(variety);
             }).orElseThrow(()-> new ResourceNotFoundException("Color", "color_id",requestVariety.getColor_id()));
         }).orElseThrow(()-> new ResourceNotFoundException("Provider", "provider_id", requestVariety.getProvider_id()));

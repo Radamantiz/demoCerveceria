@@ -8,8 +8,6 @@ public class VarietyDTO extends AuditModel {
     @NotNull
     private boolean active;
     @NotNull
-    private long provider_id;
-    @NotNull
     private double  pint_price;
     @NotNull
     private double  half_pint_price;
@@ -20,9 +18,10 @@ public class VarietyDTO extends AuditModel {
     @NotNull
     private double alcohol_percentage;
     @NotNull
-    private long color_id;
+    private long provider_id;
     @NotNull
-    //private double profit_percentage;
+    private long color_id;
+
 
     public String getName() {
         return name;
@@ -38,30 +37,6 @@ public class VarietyDTO extends AuditModel {
 
     public void setActive(boolean active) {
         this.active = active;
-    }
-
-    public long getProvider_id() {
-        return provider_id;
-    }
-
-    public void setProvider_id(long provider_id) {
-        this.provider_id = provider_id;
-    }
-
-    public double getIbu() {
-        return ibu;
-    }
-
-    public void setIbu(double ibu) {
-        this.ibu = ibu;
-    }
-
-    public double getAlcohol_percentage() {
-        return alcohol_percentage;
-    }
-
-    public void setAlcohol_percentage(double alcohol_percentage) {
-        this.alcohol_percentage = alcohol_percentage;
     }
 
     public double getPint_price() {
@@ -86,6 +61,30 @@ public class VarietyDTO extends AuditModel {
 
     public void setBottle_price(double bottle_price) {
         this.bottle_price = bottle_price;
+    }
+
+    public double getIbu() {
+        return ibu;
+    }
+
+    public void setIbu(double ibu) {
+        this.ibu = ibu;
+    }
+
+    public double getAlcohol_percentage() {
+        return alcohol_percentage;
+    }
+
+    public void setAlcohol_percentage(double alcohol_percentage) {
+        this.alcohol_percentage = alcohol_percentage;
+    }
+
+    public long getProvider_id() {
+        return provider_id;
+    }
+
+    public void setProvider_id(long provider_id) {
+        this.provider_id = provider_id;
     }
 
     public long getColor_id() {
