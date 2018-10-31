@@ -61,6 +61,7 @@ public class VarietyController {
             variety.setAlcohol_percentage(varietyDetails.getAlcohol_percentage());
             variety.setPint_price(varietyDetails.getPint_price());
             variety.setHalf_pint_price(varietyDetails.getHalf_pint_price());
+            variety.setBottle_price(varietyDetails.getBottle_price());
             variety.setIbu(varietyDetails.getIbu());
             return varietyRepository.save(variety);
         }).orElseThrow(()-> new ResourceNotFoundException("Variety", "variety_id:", varietyId));
