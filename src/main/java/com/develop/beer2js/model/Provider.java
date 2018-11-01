@@ -8,7 +8,6 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-//@Table(name = "provider")
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
         allowGetters = true)
 public class Provider extends AuditModel {

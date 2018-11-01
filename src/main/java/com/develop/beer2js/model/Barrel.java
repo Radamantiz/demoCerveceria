@@ -1,13 +1,18 @@
 package com.develop.beer2js.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
+        allowGetters = true)
 public class Barrel extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
