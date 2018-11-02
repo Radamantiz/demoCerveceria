@@ -33,6 +33,7 @@ public class ProviderController {
         return providerRepository.findById(provider_id)
                 .orElseThrow(() -> new ResourceNotFoundException("provider", "provider_id",provider_id));
     }
+
     @PutMapping("/providers/{provider_id}")
     public Provider updateProvider(@PathVariable(value = "provider_id") Long provider_id, @Valid @RequestBody Provider providerDetails){
 
@@ -46,11 +47,11 @@ public class ProviderController {
     }
 
     @DeleteMapping("/providers/{provider_id}")
-    public ResponseEntity<?> deleteProvider(@PathVariable(value = "provider_id") Long provider_id){
+    public Provider deleteProvider(@PathVariable(value = "provider_id") Long provider_id){
 
         return providerRepository.findById(provider_id).map(provider -> {
-             providerRepository.delete(provider);
-             return ResponseEntity.ok().build();
+             provider.setDeleted(true);
+             return providerRepository.save(provider);
         }).orElseThrow(()-> new ResourceNotFoundException("Provider","provider_id",provider_id));
     }
 

@@ -22,15 +22,17 @@ public class ColorController {
     public List<Color> getColors(){
         return  colorRepository.findAll();
     }
+
     @PostMapping("/colors")
     public Color addColor(@Valid @RequestBody Color color){
         return colorRepository.save(color);
     }
+
     @DeleteMapping("/colors/{color_id)")
-    public ResponseEntity<?> deleteColor(@PathParam(value = "color_id") long color_id){
+    public Color deleteColor(@PathParam(value = "color_id") long color_id){
         return colorRepository.findById(color_id).map(color -> {
-             colorRepository.delete(color);
-            return ResponseEntity.ok().build();
+            color.setDeleted(true);
+            return  colorRepository.save(color);
         }).orElseThrow(()-> new ResourceNotFoundException("Color","color_id",color_id));
     }
 }

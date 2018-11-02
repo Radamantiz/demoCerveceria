@@ -1,15 +1,14 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
-
+/USAGES/
 ### STS ###
 .apt_generated
 .classpath
 .factorypath
 .project
 .settings
-.springBeans
+.springBeansz
 .sts4-cache
-application-local.properties
 ### IntelliJ IDEA ###
 .idea
 *.iws

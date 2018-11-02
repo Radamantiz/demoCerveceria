@@ -22,6 +22,8 @@ public class Provider extends AuditModel {
     private String contactNumber;
     @NotBlank
     private String contactRefName;
+    private boolean deleted = false;
+
 
     public Long getId() {
         return id;
@@ -63,4 +65,11 @@ public class Provider extends AuditModel {
         this.contactRefName = contactRefName;
     }
 
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 }

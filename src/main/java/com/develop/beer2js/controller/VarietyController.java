@@ -6,7 +6,6 @@ import com.develop.beer2js.repository.ColorRepository;
 import com.develop.beer2js.repository.ProviderRepository;
 import com.develop.beer2js.repository.VarietyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -67,11 +66,16 @@ public class VarietyController {
         }).orElseThrow(()-> new ResourceNotFoundException("Variety", "variety_id:", varietyId));
     }
     @DeleteMapping("/varieties/{varietyId}")
-    public ResponseEntity<?> deleteVarity(@PathVariable(value = "varietyId") Long varietyId){
-
+    public Variety deleteVarity(@PathVariable(value = "varietyId") Long varietyId){
+        return varietyRepository.findById(varietyId).map(variety -> {
+            variety.setDeleted(true);
+            return varietyRepository.save(variety);
+        }).orElseThrow(()-> new ResourceNotFoundException("Variety", "variety_id", varietyId));
+    }
+        /*
        return varietyRepository.findById(varietyId).map(variety -> {
             varietyRepository.delete(variety);
            return ResponseEntity.ok().build();
        }).orElseThrow(()-> new ResourceNotFoundException("Variety", "variety_id", varietyId));
-    }
+    }*/
 }

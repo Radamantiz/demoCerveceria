@@ -35,6 +35,8 @@ public class Variety extends AuditModel {
     private double ibu;
     @NotNull
     private double alcohol_percentage;
+    private boolean deleted = false;
+
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -130,6 +132,14 @@ public class Variety extends AuditModel {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }
 

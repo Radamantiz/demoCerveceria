@@ -3,6 +3,7 @@ package com.develop.beer2js.controller;
 import com.develop.beer2js.exception.ResourceNotFoundException;
 import com.develop.beer2js.model.Barrel;
 import com.develop.beer2js.model.BarrelDTO;
+import com.develop.beer2js.model.Color;
 import com.develop.beer2js.repository.BarrelRepository;
 import com.develop.beer2js.repository.VarietyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,11 +56,11 @@ public class BarrelController {
     }
 
     @DeleteMapping("barrels/{barrel_id}")
-    public ResponseEntity<?> deleteBarrel(@PathVariable(value = "barrel_id") Long barrel_id){
+    public Barrel deleteBarrel(@PathVariable(value = "barrel_id") Long barrel_id){
 
         return barrelRepository.findById(barrel_id).map(barrel -> {
-            barrelRepository.delete(barrel);
-            return ResponseEntity.ok().build();
+            barrel.setDeleted(true );
+            return barrelRepository.save(barrel);
         }).orElseThrow(()-> new ResourceNotFoundException("Barrel","barrel_id",barrel_id));
 
     }

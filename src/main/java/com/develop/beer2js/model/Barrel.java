@@ -23,12 +23,15 @@ public class Barrel extends AuditModel {
     private double charge;
     @NotNull
     private Integer capacity;
+    private boolean deleted = false;
+
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "variety_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Variety variety;
+
 
     public Long getId() {
         return id;
@@ -76,5 +79,13 @@ public class Barrel extends AuditModel {
 
     public void setCapacity(Integer capacity) {
         this.capacity = capacity;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }
