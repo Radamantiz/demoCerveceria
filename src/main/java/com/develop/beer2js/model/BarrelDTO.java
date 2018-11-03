@@ -2,7 +2,7 @@ package com.develop.beer2js.model;
 
 import javax.validation.constraints.NotNull;
 
-public class BarrelDTO extends AuditModel {
+public class BarrelDTO   {
     @NotNull
     private boolean tapped;
     @NotNull

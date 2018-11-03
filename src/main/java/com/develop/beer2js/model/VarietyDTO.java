@@ -2,7 +2,7 @@ package com.develop.beer2js.model;
 
 import javax.validation.constraints.NotNull;
 
-public class VarietyDTO extends AuditModel {
+public class VarietyDTO   {
     @NotNull
     private String name;
     @NotNull

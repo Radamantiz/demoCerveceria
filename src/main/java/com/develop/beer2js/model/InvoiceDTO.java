@@ -1,24 +1,12 @@
 package com.develop.beer2js.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Entity
-public class Invoice {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class InvoiceDTO {
     @NotNull
     private Long bill_number;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "salepoint_id", updatable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private SalePoint salepoint;
+    @NotNull
+    private Long salepoint_id;
     @NotNull
     private double iva_grabado;
     @NotNull
@@ -34,14 +22,6 @@ public class Invoice {
     @NotNull
     private double iva_105;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Long getBill_number() {
         return bill_number;
     }
@@ -50,12 +30,12 @@ public class Invoice {
         this.bill_number = bill_number;
     }
 
-    public SalePoint getSalepoint() {
-        return salepoint;
+    public Long getSalepoint_id() {
+        return salepoint_id;
     }
 
-    public void setSalepoint(SalePoint salepoint) {
-        this.salepoint = salepoint;
+    public void setSalepoint_id(Long salepoint_id) {
+        this.salepoint_id = salepoint_id;
     }
 
     public double getIva_grabado() {
@@ -114,4 +94,3 @@ public class Invoice {
         this.iva_105 = iva_105;
     }
 }
-
