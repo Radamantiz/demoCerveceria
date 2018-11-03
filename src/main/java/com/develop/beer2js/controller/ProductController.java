@@ -4,7 +4,6 @@ import com.develop.beer2js.exception.ResourceNotFoundException;
 import com.develop.beer2js.model.Product;
 import com.develop.beer2js.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

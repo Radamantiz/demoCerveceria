@@ -3,11 +3,9 @@ package com.develop.beer2js.controller;
 import com.develop.beer2js.exception.ResourceNotFoundException;
 import com.develop.beer2js.model.Barrel;
 import com.develop.beer2js.model.BarrelDTO;
-import com.develop.beer2js.model.Color;
 import com.develop.beer2js.repository.BarrelRepository;
 import com.develop.beer2js.repository.VarietyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

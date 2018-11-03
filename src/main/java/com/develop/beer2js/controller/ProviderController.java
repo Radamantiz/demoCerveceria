@@ -16,7 +16,7 @@ import java.util.List;
 public class ProviderController {
 
     @Autowired
-    ProviderRepository providerRepository;
+    private ProviderRepository providerRepository;
 
     @GetMapping("/providers")
     public List<Provider> getProviders(){
