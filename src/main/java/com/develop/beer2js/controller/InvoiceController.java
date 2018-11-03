@@ -23,7 +23,7 @@ public class InvoiceController {
         return invoiceRepository.findAll();
     }
 
-    @GetMapping("/invoices/{invoice_id")
+    @GetMapping("/invoices/{invoice_id}")
     public Invoice getInvoiceById(@PathVariable("invoice_id") Long invoice_id){
         return invoiceRepository.findById(invoice_id)
                 .orElseThrow(()->new ResourceNotFoundException("Invoice","invoice_id",invoice_id));

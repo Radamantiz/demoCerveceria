@@ -23,7 +23,7 @@ public class ColorController {
     @GetMapping("/colors/{color_id)")
     public Color getColorById(@PathParam(value = "color_id") long color_id) {
         return colorRepository.findById(color_id)
-                .orElseThrow(()-> new ResourceNotFoundException("Color","color_id",color_id));               
+                .orElseThrow(()-> new ResourceNotFoundException("Color","color_id",color_id));
 
     }
     @PostMapping("/colors")
