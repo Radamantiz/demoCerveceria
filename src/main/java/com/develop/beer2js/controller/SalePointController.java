@@ -44,7 +44,7 @@ public class SalePointController {
     @DeleteMapping("/salepoints/{salepoint_id}")
     public SalePoint deleteSalePoint(@PathVariable ("salepoint_id") Long salePoint_id){
        return salePointRepository.findById(salePoint_id).map(salePoint -> {
-           salePoint.setDelete(true);
+           salePoint.setDeleted(true);
            return salePointRepository.save(salePoint);
        }).orElseThrow(()-> new ResourceNotFoundException("SalePoint", "salepoint_id",salePoint_id));
     }

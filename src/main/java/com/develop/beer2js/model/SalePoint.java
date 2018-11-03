@@ -1,12 +1,15 @@
 package com.develop.beer2js.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
+        allowGetters = true)
 public class SalePoint {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +23,7 @@ public class SalePoint {
     @NotBlank
     private String manager_name;
 
-    private boolean delete=false;
+    private boolean deleted=false;
 
     public Long getId() {
         return id;
@@ -62,11 +65,12 @@ public class SalePoint {
         this.manager_name = manager_name;
     }
 
-    public boolean isDelete() {
-        return delete;
+
+    public boolean isDeleted() {
+        return deleted;
     }
 
-    public void setDelete(boolean delete) {
-        this.delete = delete;
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }
