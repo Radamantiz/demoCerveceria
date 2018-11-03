@@ -19,6 +19,13 @@ public class ProductController {
     public List<Product> getProducts(){
         return productRepository.findAll();
     }
+
+    @GetMapping("/products/{product_id}")
+    public Product getProductById(@PathVariable ("product_id") Long product_id){
+        return productRepository.findById(product_id).
+                orElseThrow(()->new ResourceNotFoundException("Product","product_id",product_id));
+    }
+
     @PostMapping("/products")
     public Product addProduct(@Valid @RequestBody Product product) {
         return productRepository.save(product);

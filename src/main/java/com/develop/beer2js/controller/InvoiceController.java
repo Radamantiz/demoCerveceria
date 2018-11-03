@@ -22,6 +22,13 @@ public class InvoiceController {
     public List<Invoice> getInvoices(){
         return invoiceRepository.findAll();
     }
+
+    @GetMapping("/invoices/{invoice_id")
+    public Invoice getInvoiceById(@PathVariable("invoice_id") Long invoice_id){
+        return invoiceRepository.findById(invoice_id)
+                .orElseThrow(()->new ResourceNotFoundException("Invoice","invoice_id",invoice_id));
+    }
+
     @PostMapping("/invoices")
     public Invoice addInvoice(@Valid @RequestBody InvoiceDTO invoiceInformation){
         return salePointRepository.findById(invoiceInformation.getSalepoint_id()).map(salePoint -> {

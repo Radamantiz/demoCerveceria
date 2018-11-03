@@ -21,6 +21,13 @@ public class SalePointController {
         return salePointRepository.findAll();
     }
 
+    @GetMapping("/salepoints/{salepoint_id}")
+    public SalePoint getSalePointById(@PathVariable("salepoint_id") Long salepoint_id){
+        return  salePointRepository.findById(salepoint_id).orElseThrow(()->
+              new ResourceNotFoundException("salepoint","salepoint_id",salepoint_id));
+
+    }
+
     @PostMapping("/salepoints")
     public SalePoint addSalePoint(@Valid @RequestBody SalePoint salePoint){
         return salePointRepository.save(salePoint);

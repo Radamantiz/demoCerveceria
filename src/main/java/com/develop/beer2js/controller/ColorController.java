@@ -20,7 +20,12 @@ public class ColorController {
     public List<Color> getColors(){
         return  colorRepository.findAll();
     }
+    @GetMapping("/colors/{color_id)")
+    public Color getColorById(@PathParam(value = "color_id") long color_id) {
+        return colorRepository.findById(color_id)
+                .orElseThrow(()-> new ResourceNotFoundException("Color","color_id",color_id));               
 
+    }
     @PostMapping("/colors")
     public Color addColor(@Valid @RequestBody Color color){
         return colorRepository.save(color);
