@@ -7,3 +7,4 @@
 - mvn clean package
 - in local -> java -jar -Dspring.profiles.active=local target\beer2js-0.0.1-SNAPSHOT.jar
 
+https://beer2js.herokuapp.com/api/providers <- API endpoint f.e
